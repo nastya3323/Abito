@@ -78,8 +78,17 @@ const render = (cardList) => {
   });
 };
 
+const filteredArray = (array, value) => {
+    return array.filter((item) => {
+      return item.title.includes(value) || item.price.includes(value);
+    });
+  };
+
 cardWrapper.style.justifyContent = "flex-start";
 cardWrapper.style.gap = "30px";
 
 render(cardArray);
 
+searchBtn.addEventListener("click", () => {
+  render(filteredArray(cardArray, searchInput.value));
+});
